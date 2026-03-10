@@ -59,7 +59,7 @@
         As <strong><span class="tau-symbol">&tau;</span></strong> decreases, heuristic normalizations drift into <span class="hl-bad-inline">instability and mode collapse</span>,
         while <span class="hl-good-inline">Sinkhorn preserves coherent transport</span> throughout.
       </p>
-      <p class="motion-meta"><strong>Particle Drift Trajectories</strong> (<em>N</em> = 100, steps = 2500). Each GIF also displays the current step count during the rollout.</p>
+      <p class="motion-meta"><strong>Particle Drift Trajectories</strong> (<em>N</em> = 100, steps = 75). Each GIF also displays the current step count during the rollout.</p>
       <p class="motion-legend">
         <span><span class="legend-dot source"></span>Source</span>
         <span><span class="legend-dot current"></span>Current</span>
@@ -68,20 +68,20 @@
       </p>
       <div class="motion-grid">
         <figure class="motion-card">
-          <img src="assets/teaser_dynamics/tau10_full.gif" alt="Animated drift trajectories for tau equals 10 across all five normalization panels." loading="lazy">
-          <figcaption><strong><span class="tau-symbol">&tau;</span> = 10.</strong> Large-temperature regime: all methods remain comparatively well behaved.</figcaption>
-        </figure>
-        <figure class="motion-card">
-          <img src="assets/teaser_dynamics/tau1_full.gif" alt="Animated drift trajectories for tau equals 1 across all five normalization panels." loading="lazy">
-          <figcaption><strong><span class="tau-symbol">&tau;</span> = 1.</strong> Intermediate regime: differences are mild, but Sinkhorn is already the cleanest transport field.</figcaption>
+          <img src="assets/teaser_dynamics/tau0p01_full.gif" alt="Animated drift trajectories for tau equals 0.01 across all five normalization panels." loading="lazy">
+          <figcaption><strong><span class="tau-symbol">&tau;</span> = 0.01.</strong> Extreme low-temperature regime: heuristic normalization <span class="hl-bad-inline">deteriorates sharply</span>, while <span class="hl-good-inline">Sinkhorn remains the most stable</span>.</figcaption>
         </figure>
         <figure class="motion-card">
           <img src="assets/teaser_dynamics/tau0p1_full.gif" alt="Animated drift trajectories for tau equals 0.1 across all five normalization panels." loading="lazy">
           <figcaption><strong><span class="tau-symbol">&tau;</span> = 0.1.</strong> <span class="hl-bad-inline">Low-temperature breakdown</span> begins: masked baselines turn erratic, while <span class="hl-good-inline">Sinkhorn stays organized</span>.</figcaption>
         </figure>
         <figure class="motion-card">
-          <img src="assets/teaser_dynamics/tau0p01_full.gif" alt="Animated drift trajectories for tau equals 0.01 across all five normalization panels." loading="lazy">
-          <figcaption><strong><span class="tau-symbol">&tau;</span> = 0.01.</strong> Extreme low-temperature regime: heuristic normalization <span class="hl-bad-inline">deteriorates sharply</span>, while <span class="hl-good-inline">Sinkhorn remains the most stable</span>.</figcaption>
+          <img src="assets/teaser_dynamics/tau1_full.gif" alt="Animated drift trajectories for tau equals 1 across all five normalization panels." loading="lazy">
+          <figcaption><strong><span class="tau-symbol">&tau;</span> = 1.</strong> Intermediate regime: differences are mild, but Sinkhorn is already the cleanest transport field.</figcaption>
+        </figure>
+        <figure class="motion-card">
+          <img src="assets/teaser_dynamics/tau10_full.gif" alt="Animated drift trajectories for tau equals 10 across all five normalization panels." loading="lazy">
+          <figcaption><strong><span class="tau-symbol">&tau;</span> = 10.</strong> Large-temperature regime: all methods remain comparatively well behaved.</figcaption>
         </figure>
       </div>
     </section>
@@ -111,22 +111,22 @@
       </div>
       <div class="dataset-tabs" role="tablist" aria-label="Generated sample datasets">
         <button
-          class="dataset-tab is-active"
+          class="dataset-tab"
           type="button"
           role="tab"
           id="tab-mnist"
-          aria-selected="true"
+          aria-selected="false"
           aria-controls="panel-mnist"
           data-target="mnist"
         >
           MNIST
         </button>
         <button
-          class="dataset-tab"
+          class="dataset-tab is-active"
           type="button"
           role="tab"
           id="tab-ffhq"
-          aria-selected="false"
+          aria-selected="true"
           aria-controls="panel-ffhq"
           data-target="ffhq"
         >
@@ -134,7 +134,7 @@
         </button>
       </div>
 
-      <div class="sample-block is-active" id="panel-mnist" role="tabpanel" aria-labelledby="tab-mnist" data-panel="mnist">
+      <div class="sample-block" id="panel-mnist" role="tabpanel" aria-labelledby="tab-mnist" data-panel="mnist" hidden>
         <div class="sample-head">
           <span class="part-label">Part 1</span>
           <h3>MNIST</h3>
@@ -204,22 +204,27 @@
         </div>
       </div>
 
-      <div class="sample-block" id="panel-ffhq" role="tabpanel" aria-labelledby="tab-ffhq" data-panel="ffhq" hidden>
+      <div class="sample-block is-active" id="panel-ffhq" role="tabpanel" aria-labelledby="tab-ffhq" data-panel="ffhq">
         <div class="sample-head">
           <span class="part-label">Part 2</span>
           <h3>FFHQ-ALAE</h3>
           <p>Each row is a class; <strong>Baseline is on the left</strong> and <strong>Sinkhorn is on the right</strong>.</p>
         </div>
-        <div class="sample-grid ffhq-grid">
-          <figure class="sample-card">
+        <div class="ffhq-switcher" role="tablist" aria-label="FFHQ temperature selector">
+          <button class="ffhq-switch is-active" type="button" role="tab" aria-selected="true" data-ffhq-target="tau0p1"><span class="tau-symbol">&tau;</span> = 0.1</button>
+          <button class="ffhq-switch" type="button" role="tab" aria-selected="false" data-ffhq-target="tau1p0"><span class="tau-symbol">&tau;</span> = 1.0</button>
+          <button class="ffhq-switch" type="button" role="tab" aria-selected="false" data-ffhq-target="tau10p0"><span class="tau-symbol">&tau;</span> = 10.0</button>
+        </div>
+        <div class="ffhq-stage">
+          <figure class="sample-card ffhq-feature is-active" data-ffhq-panel="tau0p1">
             <img src="assets/tau_0p1_rows_baseline_left_sinkhorn_right.jpg" alt="FFHQ-ALAE qualitative comparison at tau 0.1.">
             <figcaption><strong><span class="tau-symbol">&tau;</span> = 0.1.</strong> Low-temperature generation is where the gap is clearest: the baseline collapses toward repetitive faces, while Sinkhorn remains diverse and class-faithful.</figcaption>
           </figure>
-          <figure class="sample-card">
+          <figure class="sample-card ffhq-feature" data-ffhq-panel="tau1p0" hidden>
             <img src="assets/tau_1p0_rows_baseline_left_sinkhorn_right.jpg" alt="FFHQ-ALAE qualitative comparison at tau 1.0.">
             <figcaption><strong><span class="tau-symbol">&tau;</span> = 1.0.</strong> The baseline partially recovers, but Sinkhorn still produces the more consistent, better separated class-conditional samples.</figcaption>
           </figure>
-          <figure class="sample-card">
+          <figure class="sample-card ffhq-feature" data-ffhq-panel="tau10p0" hidden>
             <img src="assets/tau_10p0_rows_baseline_left_sinkhorn_right.jpg" alt="FFHQ-ALAE qualitative comparison at tau 10.0.">
             <figcaption><strong><span class="tau-symbol">&tau;</span> = 10.0.</strong> At high temperature both methods improve, but Sinkhorn still yields cleaner class structure and stronger overall visual fidelity.</figcaption>
           </figure>
@@ -286,7 +291,8 @@
     (() => {
       const tabs = Array.from(document.querySelectorAll(".dataset-tab"));
       const panels = Array.from(document.querySelectorAll(".sample-block[data-panel]"));
-      if (!tabs.length || !panels.length) return;
+      const ffhqTabs = Array.from(document.querySelectorAll(".ffhq-switch"));
+      const ffhqPanels = Array.from(document.querySelectorAll(".ffhq-feature[data-ffhq-panel]"));
 
       function setActive(target) {
         tabs.forEach((tab) => {
@@ -305,6 +311,27 @@
       tabs.forEach((tab) => {
         tab.addEventListener("click", () => setActive(tab.dataset.target));
       });
+
+      function setFfhqActive(target) {
+        ffhqTabs.forEach((tab) => {
+          const active = tab.dataset.ffhqTarget === target;
+          tab.classList.toggle("is-active", active);
+          tab.setAttribute("aria-selected", active ? "true" : "false");
+        });
+
+        ffhqPanels.forEach((panel) => {
+          const active = panel.dataset.ffhqPanel === target;
+          panel.classList.toggle("is-active", active);
+          panel.hidden = !active;
+        });
+      }
+
+      ffhqTabs.forEach((tab) => {
+        tab.addEventListener("click", () => setFfhqActive(tab.dataset.ffhqTarget));
+      });
+
+      setActive("ffhq");
+      setFfhqActive("tau0p1");
     })();
   </script>
 </body>
