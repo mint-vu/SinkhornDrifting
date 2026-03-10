@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sinkhorn-Drifting Generative Models</title>
   <meta name="description" content="Project page for Sinkhorn-Drifting Generative Models.">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260310-3">
 </head>
 <body>
   <header class="hero-shell">
     <nav class="topbar">
       <div class="brand-lockup" aria-label="Sinkhorn-Drifting Generative Models">
         <a class="brand-mark" href="https://mint-vu.github.io/" target="_blank" rel="noopener noreferrer" aria-label="MINT Lab website">
-          <img src="assets/mintlab.png" alt="MINT Lab logo">
+          <img src="assets/mintlab.png?v=20260310-3" alt="MINT Lab logo">
         </a>
         <div class="brand-copy">
           <a class="brand-lab" href="https://mint-vu.github.io/" target="_blank" rel="noopener noreferrer">MINT Lab</a>
@@ -68,19 +68,19 @@
       </p>
       <div class="motion-grid">
         <figure class="motion-card">
-          <img src="assets/teaser_dynamics/tau0p01_full.gif" alt="Animated drift trajectories for tau equals 0.01 across all five normalization panels." loading="lazy">
+          <img src="assets/teaser_dynamics/tau0p01_full.gif?v=20260310-3" alt="Animated drift trajectories for tau equals 0.01 across all five normalization panels." loading="lazy">
           <figcaption><strong><span class="tau-symbol">&tau;</span> = 0.01.</strong> Extreme low-temperature regime: heuristic normalization <span class="hl-bad-inline">deteriorates sharply</span>, while <span class="hl-good-inline">Sinkhorn remains the most stable</span>.</figcaption>
         </figure>
         <figure class="motion-card">
-          <img src="assets/teaser_dynamics/tau0p1_full.gif" alt="Animated drift trajectories for tau equals 0.1 across all five normalization panels." loading="lazy">
+          <img src="assets/teaser_dynamics/tau0p1_full.gif?v=20260310-3" alt="Animated drift trajectories for tau equals 0.1 across all five normalization panels." loading="lazy">
           <figcaption><strong><span class="tau-symbol">&tau;</span> = 0.1.</strong> <span class="hl-bad-inline">Low-temperature breakdown</span> begins: masked baselines turn erratic, while <span class="hl-good-inline">Sinkhorn stays organized</span>.</figcaption>
         </figure>
         <figure class="motion-card">
-          <img src="assets/teaser_dynamics/tau1_full.gif" alt="Animated drift trajectories for tau equals 1 across all five normalization panels." loading="lazy">
+          <img src="assets/teaser_dynamics/tau1_full.gif?v=20260310-3" alt="Animated drift trajectories for tau equals 1 across all five normalization panels." loading="lazy">
           <figcaption><strong><span class="tau-symbol">&tau;</span> = 1.</strong> Intermediate regime: differences are mild, but Sinkhorn is already the cleanest transport field.</figcaption>
         </figure>
         <figure class="motion-card">
-          <img src="assets/teaser_dynamics/tau10_full.gif" alt="Animated drift trajectories for tau equals 10 across all five normalization panels." loading="lazy">
+          <img src="assets/teaser_dynamics/tau10_full.gif?v=20260310-3" alt="Animated drift trajectories for tau equals 10 across all five normalization panels." loading="lazy">
           <figcaption><strong><span class="tau-symbol">&tau;</span> = 10.</strong> Large-temperature regime: all methods remain comparatively well behaved.</figcaption>
         </figure>
       </div>
@@ -142,13 +142,13 @@
         <div class="sample-grid two-up">
           <figure class="sample-card">
             <a href="assets/mnist_gaussian.pdf" target="_blank" rel="noopener noreferrer">
-              <img src="assets/previews/mnist_gaussian.png" alt="MNIST Gaussian-kernel qualitative comparison.">
+              <img src="assets/previews/mnist_gaussian.png?v=20260310-3" alt="MNIST Gaussian-kernel qualitative comparison.">
             </a>
             <figcaption><strong>Gaussian kernel.</strong> At <strong><span class="tau-symbol">&tau;</span> = 0.01</strong>, the baseline collapses to a single degenerate mode, while Sinkhorn preserves all ten classes; by <strong><span class="tau-symbol">&tau;</span> = 0.1</strong>, both are recognizable, but Sinkhorn remains cleaner and more consistent.</figcaption>
           </figure>
           <figure class="sample-card">
             <a href="assets/mnist_laplacian.pdf" target="_blank" rel="noopener noreferrer">
-              <img src="assets/previews/mnist_laplacian.png" alt="MNIST Laplacian-kernel qualitative comparison.">
+              <img src="assets/previews/mnist_laplacian.png?v=20260310-3" alt="MNIST Laplacian-kernel qualitative comparison.">
             </a>
             <figcaption><strong>Laplacian kernel.</strong> The same pattern persists: baseline generation collapses at low temperature and only partially recovers, whereas Sinkhorn remains stable and class-faithful throughout the sweep.</figcaption>
           </figure>
@@ -217,15 +217,15 @@
         </div>
         <div class="ffhq-stage">
           <figure class="sample-card ffhq-feature is-active" data-ffhq-panel="tau0p1">
-            <img src="assets/tau_0p1_rows_baseline_left_sinkhorn_right.jpg" alt="FFHQ-ALAE qualitative comparison at tau 0.1.">
+            <img src="assets/tau_0p1_rows_baseline_left_sinkhorn_right.jpg?v=20260310-3" alt="FFHQ-ALAE qualitative comparison at tau 0.1.">
             <figcaption><strong><span class="tau-symbol">&tau;</span> = 0.1.</strong> Low-temperature generation is where the gap is clearest: the baseline collapses toward repetitive faces, while Sinkhorn remains diverse and class-faithful.</figcaption>
           </figure>
           <figure class="sample-card ffhq-feature" data-ffhq-panel="tau1p0" hidden>
-            <img src="assets/tau_1p0_rows_baseline_left_sinkhorn_right.jpg" alt="FFHQ-ALAE qualitative comparison at tau 1.0.">
+            <img src="assets/tau_1p0_rows_baseline_left_sinkhorn_right.jpg?v=20260310-3" alt="FFHQ-ALAE qualitative comparison at tau 1.0.">
             <figcaption><strong><span class="tau-symbol">&tau;</span> = 1.0.</strong> The baseline partially recovers, but Sinkhorn still produces the more consistent, better separated class-conditional samples.</figcaption>
           </figure>
           <figure class="sample-card ffhq-feature" data-ffhq-panel="tau10p0" hidden>
-            <img src="assets/tau_10p0_rows_baseline_left_sinkhorn_right.jpg" alt="FFHQ-ALAE qualitative comparison at tau 10.0.">
+            <img src="assets/tau_10p0_rows_baseline_left_sinkhorn_right.jpg?v=20260310-3" alt="FFHQ-ALAE qualitative comparison at tau 10.0.">
             <figcaption><strong><span class="tau-symbol">&tau;</span> = 10.0.</strong> At high temperature both methods improve, but Sinkhorn still yields cleaner class structure and stronger overall visual fidelity.</figcaption>
           </figure>
         </div>
