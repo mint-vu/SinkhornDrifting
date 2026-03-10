@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sinkhorn-Drifting Generative Models</title>
+  <meta name="description" content="Project page for Sinkhorn-Drifting Generative Models.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero-shell">
+    <nav class="topbar">
+      <div class="brand-lockup" aria-label="Sinkhorn-Drifting Generative Models">
+        <a class="brand-mark" href="https://mint-vu.github.io/" target="_blank" rel="noopener noreferrer" aria-label="MINT Lab website">
+          <img src="assets/mintlab.png" alt="MINT Lab logo">
+        </a>
+        <div class="brand-copy">
+          <a class="brand-lab" href="https://mint-vu.github.io/" target="_blank" rel="noopener noreferrer">MINT Lab</a>
+          <span class="brand-project">Sinkhorn-Drifting Generative Models</span>
+        </div>
+      </div>
+    </nav>
+
+    <section id="top" class="hero">
+      <p class="eyebrow">Project Page</p>
+      <h1>Sinkhorn-Drifting Generative Models</h1>
+      <p class="subtitle">Drifting toward the target is easy. The hard part is ensuring the dynamics cannot stop short of it.</p>
+
+      <div class="authors">
+        <a href="https://geobrownmotion.github.io/" target="_blank" rel="noopener noreferrer">Ping He<sup>1</sup></a>
+        <a href="https://reachomk.github.io/" target="_blank" rel="noopener noreferrer">Om Khangaonkar<sup>2</sup></a>
+        <a href="https://web.cs.ucdavis.edu/~hpirsiav/" target="_blank" rel="noopener noreferrer">Hamed Pirsiavash<sup>2</sup></a>
+        <a href="https://yikun-baio.github.io/" target="_blank" rel="noopener noreferrer">Yikun Bai<sup>3,&#8225;</sup></a>
+        <a href="https://skolouri.github.io/" target="_blank" rel="noopener noreferrer">Soheil Kolouri<sup>1,&#8225;</sup></a>
+      </div>
+
+      <div class="affiliations">
+        <span><sup>1</sup>Vanderbilt University</span>
+        <span><sup>2</sup>University of California, Davis</span>
+        <span><sup>3</sup>Purdue University</span>
+      </div>
+      <p class="author-note"><sup>&#8225;</sup> Corresponding Authors</p>
+
+      <div class="cta-row">
+        <a class="cta primary" href="assets/sinkhorn_drifting_paper.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+        <a class="cta" href="https://github.com/mint-vu/sinkhorn_drift.git" target="_blank" rel="noopener noreferrer">Code</a>
+      </div>
+    </section>
+  </header>
+
+  <main class="page">
+    <section id="dynamics" class="teaser section-card">
+      <div class="figure-head tag-only-head">
+        <span class="section-tag">Drift Dynamics</span>
+      </div>
+      <p class="thesis-line">As <strong><span class="tau-symbol">&tau;</span></strong> (temperature) decreases, heuristic normalizations become unstable, while Sinkhorn preserves coherent transport.</p>
+      <p class="caption">
+        All panels use the same particles and targets; only the temperature <strong><span class="tau-symbol">&tau;</span></strong> changes.
+        As <strong><span class="tau-symbol">&tau;</span></strong> decreases, heuristic normalizations drift into <span class="hl-bad-inline">instability and mode collapse</span>,
+        while <span class="hl-good-inline">Sinkhorn preserves coherent transport</span> throughout.
+      </p>
+      <p class="motion-meta"><strong>Particle Drift Trajectories</strong> (<em>N</em> = 100, steps = 2500). Each GIF also displays the current step count during the rollout.</p>
+      <p class="motion-legend">
+        <span><span class="legend-dot source"></span>Source</span>
+        <span><span class="legend-dot current"></span>Current</span>
+        <span><span class="legend-dot target"></span>Target</span>
+        <span><span class="legend-line"></span>Trajectory</span>
+      </p>
+      <div class="motion-grid">
+        <figure class="motion-card">
+          <img src="assets/teaser_dynamics/tau10_full.gif" alt="Animated drift trajectories for tau equals 10 across all five normalization panels." loading="lazy">
+          <figcaption><strong><span class="tau-symbol">&tau;</span> = 10.</strong> Large-temperature regime: all methods remain comparatively well behaved.</figcaption>
+        </figure>
+        <figure class="motion-card">
+          <img src="assets/teaser_dynamics/tau1_full.gif" alt="Animated drift trajectories for tau equals 1 across all five normalization panels." loading="lazy">
+          <figcaption><strong><span class="tau-symbol">&tau;</span> = 1.</strong> Intermediate regime: differences are mild, but Sinkhorn is already the cleanest transport field.</figcaption>
+        </figure>
+        <figure class="motion-card">
+          <img src="assets/teaser_dynamics/tau0p1_full.gif" alt="Animated drift trajectories for tau equals 0.1 across all five normalization panels." loading="lazy">
+          <figcaption><strong><span class="tau-symbol">&tau;</span> = 0.1.</strong> <span class="hl-bad-inline">Low-temperature breakdown</span> begins: masked baselines turn erratic, while <span class="hl-good-inline">Sinkhorn stays organized</span>.</figcaption>
+        </figure>
+        <figure class="motion-card">
+          <img src="assets/teaser_dynamics/tau0p01_full.gif" alt="Animated drift trajectories for tau equals 0.01 across all five normalization panels." loading="lazy">
+          <figcaption><strong><span class="tau-symbol">&tau;</span> = 0.01.</strong> Extreme low-temperature regime: heuristic normalization <span class="hl-bad-inline">deteriorates sharply</span>, while <span class="hl-good-inline">Sinkhorn remains the most stable</span>.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="tldr" class="section-card">
+      <div class="figure-head tag-only-head">
+        <span class="section-tag">TL;DR</span>
+      </div>
+      <p class="tldr-copy">
+        A drifting generator is driven by two forces: attraction toward real data and repulsion from itself. Under heuristic row-normalized couplings, these forces can cancel before the model has matched the data, leading to low-temperature collapse. We connect this dynamics to a Sinkhorn-divergence gradient flow and show that Sinkhorn scaling provides the right fix: the forces balance only when the generated and data distributions match.
+      </p>
+    </section>
+
+    <section id="abstract" class="section-card">
+      <div class="figure-head tag-only-head">
+        <span class="section-tag">Abstract</span>
+      </div>
+      <p class="abstract-copy">
+        We establish a theoretical link between the recently proposed “drifting” generative dynamics and gradient flows induced by the Sinkhorn divergence. In a particle discretization, the drift field admits a cross-minus-self decomposition: an attractive term toward the target distribution and a repulsive/self-correction term toward the current model, both expressed via one-sided normalized Gibbs kernels. We show that Sinkhorn divergence yields an analogous cross-minus-self structure, but with each term defined by entropic optimal-transport couplings obtained through two-sided Sinkhorn scaling (i.e., enforcing both marginals). This provides a precise sense in which drifting acts as a surrogate for a Sinkhorn-divergence gradient flow, interpolating between one-sided normalization and full two-sided Sinkhorn scaling. Crucially, this connection resolves an identifiability gap in prior drifting formulations: leveraging the definiteness of the Sinkhorn divergence, we show that zero drift (equilibrium of the dynamics) implies that the model and target measures match. Experiments show that Sinkhorn drifting reduces sensitivity to kernel temperature and improves one-step generative quality, trading off additional training time for a more stable optimization, without altering the inference procedure used by drift methods. These theoretical gains translate to strong low-temperature improvements in practice: on FFHQ-ALAE at the lowest temperature setting we evaluate, Sinkhorn drifting reduces mean FID from <strong>187.7</strong> to <strong>37.1</strong> and mean latent EMD from <strong>453.3</strong> to <strong>144.4</strong>, while on MNIST it preserves full class coverage across the temperature sweep.
+      </p>
+      <p class="keywords"><strong>Keywords:</strong> Drifting <span>&middot;</span> Optimal Transport <span>&middot;</span> One-Step Generative Models</p>
+    </section>
+
+    <section id="samples" class="section-card">
+      <div class="figure-head tag-only-head">
+        <span class="section-tag">Generated Samples</span>
+      </div>
+      <div class="dataset-tabs" role="tablist" aria-label="Generated sample datasets">
+        <button
+          class="dataset-tab is-active"
+          type="button"
+          role="tab"
+          id="tab-mnist"
+          aria-selected="true"
+          aria-controls="panel-mnist"
+          data-target="mnist"
+        >
+          MNIST
+        </button>
+        <button
+          class="dataset-tab"
+          type="button"
+          role="tab"
+          id="tab-ffhq"
+          aria-selected="false"
+          aria-controls="panel-ffhq"
+          data-target="ffhq"
+        >
+          FFHQ-ALAE
+        </button>
+      </div>
+
+      <div class="sample-block is-active" id="panel-mnist" role="tabpanel" aria-labelledby="tab-mnist" data-panel="mnist">
+        <div class="sample-head">
+          <span class="part-label">Part 1</span>
+          <h3>MNIST</h3>
+        </div>
+        <div class="sample-grid two-up">
+          <figure class="sample-card">
+            <a href="assets/mnist_gaussian.pdf" target="_blank" rel="noopener noreferrer">
+              <img src="assets/previews/mnist_gaussian.png" alt="MNIST Gaussian-kernel qualitative comparison.">
+            </a>
+            <figcaption><strong>Gaussian kernel.</strong> At <strong><span class="tau-symbol">&tau;</span> = 0.01</strong>, the baseline collapses to a single degenerate mode, while Sinkhorn preserves all ten classes; by <strong><span class="tau-symbol">&tau;</span> = 0.1</strong>, both are recognizable, but Sinkhorn remains cleaner and more consistent.</figcaption>
+          </figure>
+          <figure class="sample-card">
+            <a href="assets/mnist_laplacian.pdf" target="_blank" rel="noopener noreferrer">
+              <img src="assets/previews/mnist_laplacian.png" alt="MNIST Laplacian-kernel qualitative comparison.">
+            </a>
+            <figcaption><strong>Laplacian kernel.</strong> The same pattern persists: baseline generation collapses at low temperature and only partially recovers, whereas Sinkhorn remains stable and class-faithful throughout the sweep.</figcaption>
+          </figure>
+        </div>
+        <div class="mini-table-wrap">
+          <table class="mini-table mnist-table">
+            <thead>
+              <tr>
+                <th>Kernel</th>
+                <th><span class="tau-symbol">&tau;</span></th>
+                <th>Baseline EMD</th>
+                <th>Sinkhorn EMD</th>
+                <th>Baseline Acc</th>
+                <th>Sinkhorn Acc</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Gaussian</td>
+                <td>0.01</td>
+                <td>73.21</td>
+                <td>7.71</td>
+                <td>9.99%</td>
+                <td>100.00%</td>
+              </tr>
+              <tr>
+                <td>Gaussian</td>
+                <td>0.10</td>
+                <td>5.63</td>
+                <td>6.91</td>
+                <td>95.00%</td>
+                <td>100.00%</td>
+              </tr>
+              <tr>
+                <td>Laplacian</td>
+                <td>0.01</td>
+                <td>73.21</td>
+                <td>7.14</td>
+                <td>9.99%</td>
+                <td>100.00%</td>
+              </tr>
+              <tr>
+                <td>Laplacian</td>
+                <td>0.05</td>
+                <td>4.46</td>
+                <td>6.34</td>
+                <td>96.17%</td>
+                <td>99.97%</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="table-note">Representative MNIST checkpoints aligned with the panels above. Low-accuracy baseline rows indicate collapse at small temperature.</p>
+        </div>
+      </div>
+
+      <div class="sample-block" id="panel-ffhq" role="tabpanel" aria-labelledby="tab-ffhq" data-panel="ffhq" hidden>
+        <div class="sample-head">
+          <span class="part-label">Part 2</span>
+          <h3>FFHQ-ALAE</h3>
+          <p>Each row is a class; <strong>Baseline is on the left</strong> and <strong>Sinkhorn is on the right</strong>.</p>
+        </div>
+        <div class="sample-grid ffhq-grid">
+          <figure class="sample-card">
+            <img src="assets/tau_0p1_rows_baseline_left_sinkhorn_right.jpg" alt="FFHQ-ALAE qualitative comparison at tau 0.1.">
+            <figcaption><strong><span class="tau-symbol">&tau;</span> = 0.1.</strong> Low-temperature generation is where the gap is clearest: the baseline collapses toward repetitive faces, while Sinkhorn remains diverse and class-faithful.</figcaption>
+          </figure>
+          <figure class="sample-card">
+            <img src="assets/tau_1p0_rows_baseline_left_sinkhorn_right.jpg" alt="FFHQ-ALAE qualitative comparison at tau 1.0.">
+            <figcaption><strong><span class="tau-symbol">&tau;</span> = 1.0.</strong> The baseline partially recovers, but Sinkhorn still produces the more consistent, better separated class-conditional samples.</figcaption>
+          </figure>
+          <figure class="sample-card">
+            <img src="assets/tau_10p0_rows_baseline_left_sinkhorn_right.jpg" alt="FFHQ-ALAE qualitative comparison at tau 10.0.">
+            <figcaption><strong><span class="tau-symbol">&tau;</span> = 10.0.</strong> At high temperature both methods improve, but Sinkhorn still yields cleaner class structure and stronger overall visual fidelity.</figcaption>
+          </figure>
+        </div>
+        <div class="mini-table-wrap">
+          <table class="mini-table ffhq-table">
+            <thead>
+              <tr>
+                <th><span class="tau-symbol">&tau;</span></th>
+                <th>Baseline FID</th>
+                <th>Sinkhorn FID</th>
+                <th>Baseline EMD</th>
+                <th>Sinkhorn EMD</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0.1</td>
+                <td>187.7</td>
+                <td>37.1</td>
+                <td>453.3</td>
+                <td>144.4</td>
+              </tr>
+              <tr>
+                <td>1.0</td>
+                <td>146.3</td>
+                <td>33.7</td>
+                <td>370.5</td>
+                <td>137.6</td>
+              </tr>
+              <tr>
+                <td>10.0</td>
+                <td>45.3</td>
+                <td>33.9</td>
+                <td>156.4</td>
+                <td>138.5</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="table-note">Mean class-conditional FFHQ results across all six classes. Sinkhorn improves both image FID and latent EMD at every temperature.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="citation" class="section-card">
+      <div class="figure-head">
+        <span class="section-tag">Citation</span>
+        <h2>BibTeX</h2>
+      </div>
+      <pre class="bibtex"><code>@article{he2026sinkhorndrifting,
+  title   = {Sinkhorn-Drifting Generative Models},
+  author  = {He, Ping and Khangaonkar, Om and Pirsiavash, Hamed and Bai, Yikun and Kolouri, Soheil},
+  journal = {arXiv preprint arXiv:XXX},
+  year    = {2026}
+}</code></pre>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Project page for <em>Sinkhorn-Drifting Generative Models</em>.</p>
+  </footer>
+
+  <script>
+    (() => {
+      const tabs = Array.from(document.querySelectorAll(".dataset-tab"));
+      const panels = Array.from(document.querySelectorAll(".sample-block[data-panel]"));
+      if (!tabs.length || !panels.length) return;
+
+      function setActive(target) {
+        tabs.forEach((tab) => {
+          const active = tab.dataset.target === target;
+          tab.classList.toggle("is-active", active);
+          tab.setAttribute("aria-selected", active ? "true" : "false");
+        });
+
+        panels.forEach((panel) => {
+          const active = panel.dataset.panel === target;
+          panel.classList.toggle("is-active", active);
+          panel.hidden = !active;
+        });
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => setActive(tab.dataset.target));
+      });
+    })();
+  </script>
+</body>
+</html>
