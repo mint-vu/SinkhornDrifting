@@ -53,13 +53,12 @@
       <div class="figure-head tag-only-head">
         <span class="section-tag">Drift Dynamics</span>
       </div>
-      <p class="thesis-line">As <strong><span class="tau-symbol">&tau;</span></strong> (temperature) decreases, heuristic normalizations become unstable, while Sinkhorn preserves coherent transport.</p>
       <p class="caption">
         All panels use the same particles and targets; only the temperature <strong><span class="tau-symbol">&tau;</span></strong> changes.
         As <strong><span class="tau-symbol">&tau;</span></strong> decreases, heuristic normalizations drift into <span class="hl-bad-inline">instability and mode collapse</span>,
         while <span class="hl-good-inline">Sinkhorn preserves coherent transport</span> throughout.
       </p>
-      <p class="motion-meta"><strong>Particle Drift Trajectories</strong> (<em>N</em> = 100, steps = 75). Each GIF also displays the current step count during the rollout.</p>
+      <p class="motion-meta"><strong>Particle Drift Trajectories</strong> (<em>N</em> = 100, steps = 75). Each GIF also displays the current step.</p>
       <p class="motion-legend">
         <span><span class="legend-dot source"></span>Source</span>
         <span><span class="legend-dot current"></span>Current</span>
@@ -69,7 +68,7 @@
       <div class="motion-grid">
         <figure class="motion-card">
           <img src="assets/teaser_dynamics/tau0p01_full.gif?v=20260310-3" alt="Animated drift trajectories for tau equals 0.01 across all five normalization panels." loading="lazy">
-          <figcaption><strong><span class="tau-symbol">&tau;</span> = 0.01.</strong> Extreme low-temperature regime: heuristic normalization <span class="hl-bad-inline">deteriorates sharply</span>, while <span class="hl-good-inline">Sinkhorn remains the most stable</span>.</figcaption>
+          <figcaption><strong><span class="tau-symbol">&tau;</span> = 0.01.</strong> Extreme low-temperature: heuristic normalization <span class="hl-bad-inline">deteriorates sharply</span>, while <span class="hl-good-inline">Sinkhorn remains the most stable</span>.</figcaption>
         </figure>
         <figure class="motion-card">
           <img src="assets/teaser_dynamics/tau0p1_full.gif?v=20260310-3" alt="Animated drift trajectories for tau equals 0.1 across all five normalization panels." loading="lazy">
@@ -77,11 +76,11 @@
         </figure>
         <figure class="motion-card">
           <img src="assets/teaser_dynamics/tau1_full.gif?v=20260310-3" alt="Animated drift trajectories for tau equals 1 across all five normalization panels." loading="lazy">
-          <figcaption><strong><span class="tau-symbol">&tau;</span> = 1.</strong> Intermediate regime: differences are mild, but Sinkhorn is already the cleanest transport field.</figcaption>
+          <figcaption><strong><span class="tau-symbol">&tau;</span> = 1.</strong> Intermediate: differences are mild, but <span class="hl-good-inline">Sinkhorn is already the cleanest transport field</span>..</figcaption>
         </figure>
         <figure class="motion-card">
           <img src="assets/teaser_dynamics/tau10_full.gif?v=20260310-3" alt="Animated drift trajectories for tau equals 10 across all five normalization panels." loading="lazy">
-          <figcaption><strong><span class="tau-symbol">&tau;</span> = 10.</strong> Large-temperature regime: all methods remain comparatively well behaved.</figcaption>
+          <figcaption><strong><span class="tau-symbol">&tau;</span> = 10.</strong> Large-temperature: all methods remain comparatively well behaved.</figcaption>
         </figure>
       </div>
     </section>
@@ -91,7 +90,7 @@
         <span class="section-tag">TL;DR</span>
       </div>
       <p class="tldr-copy">
-        A drifting generator is driven by two forces: attraction toward real data and repulsion from itself. Under heuristic row-normalized couplings, these forces can cancel before the model has matched the data, leading to low-temperature collapse. We connect this dynamics to a Sinkhorn-divergence gradient flow and show that Sinkhorn scaling provides the right fix: the forces balance only when the generated distribution matches the data distribution.
+        A drifting generator is driven by two forces: <strong>attraction toward real data</strong> and <strong>repulsion from itself</strong>. Under heuristic row-normalized couplings, these forces can cancel before the model has matched the data, leading to low-temperature collapse. We connect this dynamics to a Sinkhorn-divergence gradient flow and show that Sinkhorn scaling provides the right fix: the forces balance only when the generated distribution matches the data distribution.
       </p>
     </section>
 
